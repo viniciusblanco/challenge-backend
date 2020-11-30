@@ -22,13 +22,7 @@ public class ChallengeBackendContoller implements ChallengeBackendResource {
 	public ChallengeBackendContoller(ChallengeBackendService challengeBackendService) {
 		this.challengeBackendService = challengeBackendService;
 	}
-	
-	
-	public String helloWorld() {
-		return challengeBackendService.getHelloWorld();
-	}
-	
-	
+		
 	@Override
 	public ResponseEntity<List<Order>> getOrders( @RequestParam("begindate") @DateTimeFormat(pattern="dd-MM-yyyy") LocalDate begindate,
 								 					@RequestParam("finaldate") @DateTimeFormat(pattern="dd-MM-yyyy") LocalDate finaldate) {

@@ -22,11 +22,6 @@ public class ChallengeBackendServiceImpl implements ChallengeBackendService {
 	}
 	
 	@Override
-	public String getHelloWorld() {
-		return "Hello World";
-	}
-	
-	@Override
 	public List<Order> getOrders(LocalDate beginDate, LocalDate finalDate) {
 		List<Order> orderResponse = new ArrayList<Order>();
 				

@@ -10,9 +10,6 @@ import br.com.bw2.challengeBackendTask1.model.Order;
 
 public interface ChallengeBackendResource {
 
-	@GetMapping("/")
-	String helloWorld();
-	
 	@GetMapping(value="/challenge-backend/item")
 	ResponseEntity<List<Order>> getOrders(LocalDate begindate, LocalDate finaldate);
 
