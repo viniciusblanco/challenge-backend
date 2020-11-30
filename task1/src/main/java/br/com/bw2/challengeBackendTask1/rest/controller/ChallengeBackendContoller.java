@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.bw2.challengeBackendTask1.model.Order;
@@ -27,8 +30,8 @@ public class ChallengeBackendContoller implements ChallengeBackendResource {
 	
 	
 	@Override
-	public List<Order> get(LocalDate beginDate, LocalDate finalDate) {
-		List<Order> itens = challengeBackendService.get(beginDate, finalDate);
-		return itens;
+	public ResponseEntity<List<Order>> getOrders( @RequestParam("begindate") @DateTimeFormat(pattern="dd-MM-yyyy") LocalDate begindate,
+								 					@RequestParam("finaldate") @DateTimeFormat(pattern="dd-MM-yyyy") LocalDate finaldate) {
+		return ResponseEntity.ok().body(challengeBackendService.getOrders(begindate, finaldate));
 	}
 }

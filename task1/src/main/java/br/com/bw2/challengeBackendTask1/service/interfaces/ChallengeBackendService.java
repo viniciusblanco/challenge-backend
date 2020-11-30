@@ -9,5 +9,5 @@ public interface ChallengeBackendService {
 	
 	String getHelloWorld();
 
-	List<Order> get(LocalDate beginDate, LocalDate finalDate);
+	List<Order> getOrders(LocalDate beginDate, LocalDate finalDate);
 }

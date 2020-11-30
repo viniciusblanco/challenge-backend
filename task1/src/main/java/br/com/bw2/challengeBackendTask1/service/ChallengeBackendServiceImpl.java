@@ -27,24 +27,20 @@ public class ChallengeBackendServiceImpl implements ChallengeBackendService {
 	}
 	
 	@Override
-	public List<Order> get(LocalDate beginDate, LocalDate finalDate) {
-		List<Order> itens = new ArrayList<Order>();
-		
-//		List<Order>itens = mockyIoOrderClient.getItens();
-//		System.out.println("Begin Date = " + beginDate);
-//		System.out.println("Final Date = " + finalDate);
-//		
+	public List<Order> getOrders(LocalDate beginDate, LocalDate finalDate) {
+		List<Order> orderResponse = new ArrayList<Order>();
+				
 		try {
 			for (Order item : mockyIoOrderClient.getItens()) {
 				if (item.getDate().toLocalDate().isAfter(beginDate.minusDays(1)) &&
 					item.getDate().toLocalDate().isBefore(finalDate.plusDays(1))) {
-					itens.add(item);
+					orderResponse.add(item);
 				}
 			}
 		} catch (Exception e) {
-			throw new RuntimeException("Ocorreu algum erro, tente novamente mais tarde!!");
+			throw new RuntimeException("Ocorreu um erro, tente novamente mais tarde!!");
 		}
 
-		return itens;
+		return orderResponse;
 	}
 }
